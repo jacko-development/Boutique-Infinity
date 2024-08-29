@@ -1,5 +1,6 @@
 fx_version 'cerulean'
 games { 'gta5' }
+lua54 'yes'
 
 author 'Destructor & Atoshi'
 description 'Infinity Boutique for FiveM'
