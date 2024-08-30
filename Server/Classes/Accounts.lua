@@ -10,6 +10,21 @@ function PlayerAccountManager:new()
     return instance
 end
 
+---@param boutiqueId number
+---@param callback function
+---@return boolean
+function PlayerAccountManager:isValidBoutiqueId(boutiqueId, callback)
+    if not boutiqueId then
+        callback(false)
+        return
+    end
+
+    MySQL.Async.fetchScalar('SELECT COUNT(*) FROM infinity_store_accounts WHERE id = @id', {['@id'] = boutiqueId}, function(result)
+        callback(result and tonumber(result) > 0)
+    end)
+end
+
+
 ---@param license string
 ---@param callback function
 function PlayerAccountManager:ensurePlayerAccount(license, callback)
@@ -74,8 +89,14 @@ function PlayerAccountManager:addCoins(boutiqueId, amount)
         return
     end
 
-    MySQL.Async.execute('UPDATE infinity_store_accounts SET coins = coins + @amount WHERE id = @id', {['@amount'] = amount, ['@id'] = boutiqueId}, function(rowsChanged)
-        if Configs.Debug then print(("^2(function 'addCoins') Added %d coins to user ID %d^7"):format(amount, boutiqueId)) end
+    self:isValidBoutiqueId(boutiqueId, function(isValid)
+        if isValid then
+            MySQL.Async.execute('UPDATE infinity_store_accounts SET coins = coins + @amount WHERE id = @id', {['@amount'] = amount, ['@id'] = boutiqueId}, function(rowsChanged)
+                if Config.Debug then print(("^2(function 'addCoins') Added %d coins to user ID %d^7"):format(amount, boutiqueId)) end
+            end)
+        else
+            print(("[^5Infinity^7] [^1Boutique^7] Invalid Boutique ID %d."):format(boutiqueId))
+        end
     end)
 end
 
@@ -87,8 +108,14 @@ function PlayerAccountManager:removeCoins(boutiqueId, amount)
         return
     end
 
-    MySQL.Async.execute('UPDATE infinity_store_accounts SET coins = GREATEST(coins - @amount, 0) WHERE id = @id', {['@amount'] = amount, ['@id'] = boutiqueId }, function(rowsChanged)
-        if Configs.Debug then print(("^2(function 'removeCoins') Removed %d coins to user ID %d^7"):format(amount, boutiqueId)) end
+    self:isValidBoutiqueId(boutiqueId, function(isValid)
+        if isValid then
+            MySQL.Async.execute('UPDATE infinity_store_accounts SET coins = GREATEST(coins - @amount, 0) WHERE id = @id', {['@amount'] = amount, ['@id'] = boutiqueId }, function(rowsChanged)
+                if Config.Debug then print(("^2(function 'removeCoins') Removed %d coins to user ID %d^7"):format(amount, boutiqueId)) end
+            end)
+        else
+            print(("[^5Infinity^7] [^1Boutique^7] Invalid Boutique ID %d."):format(boutiqueId))
+        end
     end)
 end
 
@@ -101,11 +128,17 @@ function PlayerAccountManager:getCoins(boutiqueId, callback)
         return
     end
 
-    MySQL.Async.fetchScalar('SELECT coins FROM infinity_store_accounts WHERE id = @id', {['@id'] = boutiqueId}, function(coins)
-        if coins then
-            callback(tonumber(coins))
+    self:isValidBoutiqueId(boutiqueId, function(isValid)
+        if isValid then
+            MySQL.Async.fetchScalar('SELECT coins FROM infinity_store_accounts WHERE id = @id', {['@id'] = boutiqueId}, function(coins)
+                if coins then
+                    callback(tonumber(coins))
+                else
+                    callback(0) 
+                end
+            end)
         else
-            callback(0) 
+            print(("[^5Infinity^7] [^1Boutique^7] Invalid Boutique ID %d."):format(boutiqueId))
         end
     end)
 end
