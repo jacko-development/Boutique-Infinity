@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { VisibilityProvider, useVisibility  } from './providers/VisibilityProvider';
-import Inventory from './inventory/app';
+import Boutique from './boutique/app';
 import { isEnvBrowser } from './utils/misc';
 import './index.css';
 
@@ -9,7 +9,7 @@ const ComponentRenderer: React.FC = () => {
   
     return (
         <VisibilityProvider>
-             <Inventory />
+             <Boutique />
         </VisibilityProvider>
     );
 };
