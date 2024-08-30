@@ -60,8 +60,52 @@ function PlayerAccountManager:onPlayerConnecting()
 
         self:ensurePlayerAccount(license, function(isCreated)
             if isCreated then
-                self.playerLicenses[_source] = nil  -- Nettoyage après utilisation
+                self.playerLicenses[_source] = nil 
             end
         end)
+    end)
+end
+
+---@param boutiqueId number
+---@param amount number
+function PlayerAccountManager:addCoins(boutiqueId, amount)
+    if not boutiqueId or not amount or amount <= 0 then
+        if Config.Debug then print("^1(function 'addCoins') Invalid parameters provided^7") end
+        return
+    end
+
+    MySQL.Async.execute('UPDATE infinity_store_accounts SET coins = coins + @amount WHERE id = @id', {['@amount'] = amount, ['@id'] = boutiqueId}, function(rowsChanged)
+        if Configs.Debug then print(("^2(function 'addCoins') Added %d coins to user ID %d^7"):format(amount, boutiqueId)) end
+    end)
+end
+
+---@param boutiqueId number
+---@param amount number
+function PlayerAccountManager:removeCoins(boutiqueId, amount)
+    if not boutiqueId or not amount or amount <= 0 then
+        if Config.Debug then print("^1(function 'addCoins') Invalid parameters provided^7") end
+        return
+    end
+
+    MySQL.Async.execute('UPDATE infinity_store_accounts SET coins = GREATEST(coins - @amount, 0) WHERE id = @id', {['@amount'] = amount, ['@id'] = boutiqueId }, function(rowsChanged)
+        if Configs.Debug then print(("^2(function 'removeCoins') Removed %d coins to user ID %d^7"):format(amount, boutiqueId)) end
+    end)
+end
+
+---@param boutiqueId number
+---@param callback function
+---@return number
+function PlayerAccountManager:getCoins(boutiqueId, callback)
+    if not boutiqueId then
+        if Config.Debug then print("^1(function 'getCoins') Invalid parameters provided^7") end
+        return
+    end
+
+    MySQL.Async.fetchScalar('SELECT coins FROM infinity_store_accounts WHERE id = @id', {['@id'] = boutiqueId}, function(coins)
+        if coins then
+            callback(tonumber(coins))
+        else
+            callback(0) 
+        end
     end)
 end
