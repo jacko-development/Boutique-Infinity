@@ -1,15 +1,14 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { VisibilityProvider, useVisibility  } from './providers/VisibilityProvider';
-import Componentrenderer from './ComponentRenderer';
+import { VisibilityProvider } from './providers/VisibilityProvider';
+import App from './boutique/app'
 import './index.css';
-
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <VisibilityProvider>
-      <Componentrenderer />
+      <App />
     </VisibilityProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

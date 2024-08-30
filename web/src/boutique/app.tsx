@@ -5,6 +5,14 @@ import { isEnvBrowser } from '../utils/misc';
 import {Dev} from './Dev/dev'
 import './boutique.scss';
 import './style.scss';
+import { debugData } from "../utils/debugData";
+
+debugData([
+    {
+      action: "setVisible",
+      data: true,
+    },
+]);
 
 interface ContentsBoutique {
     Véhicules?: {
