@@ -50,3 +50,5 @@ end)
 RegisterNUICallback("boutique:BuyCaisse", function(CaisseName)
   print("Buy caisse", CaisseName)
 end)
+
+print("test")
