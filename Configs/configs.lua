@@ -1,4 +1,5 @@
 local Configs <const> = {
+    Debug = true
 
 }
 
