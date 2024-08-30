@@ -60,7 +60,7 @@ function PlayerAccountManager:onPlayerConnecting()
 
         self:ensurePlayerAccount(license, function(isCreated)
             if isCreated then
-                self.playerLicenses[_source] = nil  -- Nettoyage après utilisation
+                self.playerLicenses[_source] = nil 
             end
         end)
     end)
@@ -105,7 +105,7 @@ function PlayerAccountManager:getCoins(boutiqueId, callback)
         if coins then
             callback(tonumber(coins))
         else
-            callback(0)  -- Retourne 0 si aucun résultat
+            callback(0) 
         end
     end)
 end
