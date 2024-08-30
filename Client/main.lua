@@ -21,11 +21,11 @@ RegisterCommand("open:Boutique", function()
     }
   })
   SendReactMessage('boutique:setInfoBoutique', { 
-    Véhicules = {
-      ["bmwm3g80"] = {
-          model = "bmwm3g80",
-          label = "BMW M3 G80 2021",
-          price = 1800,
+    Vehicules = {
+      ["sultan"] = {
+          model = "sultan",
+          label = "Sultan",
+          price = 900,
           image = "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
       },
     },

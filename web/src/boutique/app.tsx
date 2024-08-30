@@ -16,7 +16,7 @@ debugData([
 ]);
 
 interface ContentsBoutique {
-    Véhicules?: {
+    Vehicules?: {
         [model: string ]: {
             model: string;
             label: string;
@@ -63,8 +63,8 @@ const Inventory: React.FC = () => {
             {isEnvBrowser() && (
                 <Dev setInformationPlayer={setInformationPlayer}/>
             )}
-            {SelectPreviewVéhicules !== null && BoutiqueContents && BoutiqueContents?.Véhicules && BoutiqueContents?.Véhicules[SelectPreviewVéhicules] && (
-                <PreviewVehicule data={BoutiqueContents?.Véhicules[SelectPreviewVéhicules]} setSelectPreviewVéhicules={setSelectPreviewVéhicules}/>
+            {SelectPreviewVéhicules !== null && BoutiqueContents && BoutiqueContents?.Vehicules && BoutiqueContents?.Vehicules[SelectPreviewVéhicules] && (
+                <PreviewVehicule data={BoutiqueContents?.Vehicules[SelectPreviewVéhicules]} setSelectPreviewVéhicules={setSelectPreviewVéhicules}/>
             )} 
             {!SelectPreviewVéhicules && (
                 <div className="boutique">
@@ -87,8 +87,8 @@ const Inventory: React.FC = () => {
                             )}
                             <span>Historique</span>
                         </div>
-                        <div className={`button ${SelectCategorie ===  "Véhicules" ? 'select' : ''}`} onClick={(e) =>setSelectCategorie("Véhicules")}>
-                            {SelectCategorie ===  "Véhicules" ? (
+                        <div className={`button ${SelectCategorie ===  "Vehicules" ? 'select' : ''}`} onClick={(e) =>setSelectCategorie("Vehicules")}>
+                            {SelectCategorie ===  "Vehicules" ? (
                                 <img className="icon" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1278411826794598462/car-select.png?ex=66d0b54b&is=66cf63cb&hm=24e4af0021e8425ecd3f781d86a6525df89df6cecf408f1269254c1eb2e5c846&"} alt=""/>
                             ) : (
                                 <img className="icon" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1278411827033669725/car.png?ex=66d0b54b&is=66cf63cb&hm=8c9612bb4a49294c357b7a54aa459e2b3e55d57cc2a52890ffd9d242801efd8e&"} alt=""/> 
@@ -131,17 +131,17 @@ const Inventory: React.FC = () => {
                         </div>
                     </div>
                     <div className="boutique-center">
-                        {(SelectCategorie === "Véhicules" || SelectCategorie === "Armes" || SelectCategorie === "Caisses") && (
+                        {(SelectCategorie === "Vehicules" || SelectCategorie === "Armes" || SelectCategorie === "Caisses") && (
                             <div className="wrapper-article">
                                 {BoutiqueContents?.[SelectCategorie] && Object.values(BoutiqueContents?.[SelectCategorie]).map((value, index) => (
                                     <div className="box-article">
-                                        <img className="image-article" src={value.image} alt=""/>
+                                        <img className="image-article" src={`nui://BOUTIQUE-INFINITY/web/assets/${SelectCategorie}/${value.model}.png`} alt=""/>
                                         <div className="label-article">{value.label}</div>
                                         <div className="price-article">
                                             {value.price}
-                                            <img className="icon-coins-article" src={"`nui://BOUTIQUE-INFINITY/web/assets/coins.png`"} alt=""/>
+                                            <img className="icon-coins-article" src={`nui://BOUTIQUE-INFINITY/web/assets/coins.png`} alt=""/>
                                         </div>
-                                        {SelectCategorie === "Véhicules" && (
+                                        {SelectCategorie === "Vehicules" && (
                                             <div className="button-previsualiser-article" onClick={(e) => setSelectPreviewVéhicules(value.model)}>{"PRÉVISUALISER"}</div>
                                         )}
                                         {(SelectCategorie === "Armes" || SelectCategorie === "Caisses") && (
