@@ -6,3 +6,9 @@ function SendReactMessage(action, data)
       data = data
     })
 end
+
+
+RegisterCommand("open:Boutique", function()
+  SetNuiFocus(true, true)
+  SendReactMessage('setVisible', true)
+end)
