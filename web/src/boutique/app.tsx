@@ -6,6 +6,7 @@ import {Dev} from './Dev/dev'
 import './boutique.scss';
 import './style.scss';
 import { debugData } from "../utils/debugData";
+import { PreviewVehicule } from "./components/PreviewVehicule";
 
 debugData([
     {
@@ -16,7 +17,7 @@ debugData([
 
 interface ContentsBoutique {
     Véhicules?: {
-        [model: string]: {
+        [model: string ]: {
             model: string;
             label: string;
             price: number;
@@ -44,71 +45,71 @@ interface ContentsBoutique {
 const Inventory: React.FC = () => {
     const [InformationPlayer, setInformationPlayer] = useState<any | null>(null);
     const [SelectCategorie, setSelectCategorie] = useState<string>("Acceuil");
-    const [SelectPreviewVéhicules, setSelectPreviewVéhicules] = useState<string | null>(null);
+    const [SelectPreviewVéhicules, setSelectPreviewVéhicules] = useState<any>(null);
     const [BoutiqueContents, setBoutiqueContents] = useState<ContentsBoutique | null>({
         Véhicules: {
             "bmwm3g80": {
                 model: "bmwm3g80",
                 label: "BMW M3 G80 2021",
-                price: 1400,
+                price: 1800,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmwms3g80": {
-                model: "bmwm3g80",
+                model: "bmwms3g80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmwmss3g80": {
-                model: "bmwm3g80",
+                model: "bmwmss3g80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmwm3gsss80": {
-                model: "bmwm3g80",
+                model: "bmwm3gsss80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmssswm3g80": {
-                model: "bmwm3g80",
+                model: "bmssswm3g80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmssswsssm3g80": {
-                model: "bmwm3g80",
+                model: "bmssswsssm3g80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmssswssfdgsm3g80": {
-                model: "bmwm3g80",
+                model: "bmssswssfdgsm3g80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmssswssfergdsm3g80": {
-                model: "bmwm3g80",
+                model: "bmssswssfergdsm3g80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmssswsssmzef3g80": {
-                model: "bmwm3g80",
+                model: "bmssswsssmzef3g80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmssswsssmze3g80": {
-                model: "bmwm3g80",
+                model: "bmssswsssmze3g80",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
             },
             "bmssswsssm3g80hth": {
-                model: "bmwm3g80",
+                model: "bmssswsssm3g80hth",
                 label: "BMW M3 G80 2021",
                 price: 1400,
                 image: "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
@@ -132,28 +133,15 @@ const Inventory: React.FC = () => {
         }
     });
 
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-          if (event.key === 'Backspace') {
-            if (SelectPreviewVéhicules) {
-                setSelectPreviewVéhicules(null)
-            }
-          }
-        };
-    
-        window.addEventListener('keydown', handleKeyDown);
-    
-        return () => {
-          window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [SelectPreviewVéhicules]);
-
     return (
         <div className="wrapper-boutique">
             {isEnvBrowser() && (
                 <Dev setInformationPlayer={setInformationPlayer}/>
             )}
-            {!SelectPreviewVéhicules ? (
+            {SelectPreviewVéhicules !== null && BoutiqueContents && BoutiqueContents?.Véhicules && BoutiqueContents?.Véhicules[SelectPreviewVéhicules] && (
+                <PreviewVehicule data={BoutiqueContents?.Véhicules[SelectPreviewVéhicules]} setSelectPreviewVéhicules={setSelectPreviewVéhicules}/>
+            )} 
+            {!SelectPreviewVéhicules && (
                 <div className="boutique">
                     <div className="boutique-side-bar-right">
                         <img className="bannierre" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1277739560746483783/logo.png?ex=66d03d72&is=66ceebf2&hm=ebea99b994a2cae6e101affd2ad493f226f0fd054d185d7c44621d3a1a0a4dae&"} alt=""/>
@@ -246,18 +234,6 @@ const Inventory: React.FC = () => {
                             </div>
                         )}
                     </div>
-                </div>
-            ) : (
-                <div className="boutique-preview-vehicules">
-                     <img className="bannierre" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1277739560746483783/logo.png?ex=66d03d72&is=66ceebf2&hm=ebea99b994a2cae6e101affd2ad493f226f0fd054d185d7c44621d3a1a0a4dae&"} alt=""/>
-                     <div className="box-button">
-                        <div className="price-vehicule">
-                            {1400}
-                            <img className="icon-coins-vehicule" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1278374740821540915/pngtree-blue-gemstone-diamond-illustration-image_1402869-removebg-preview.png?ex=66d092c1&is=66cf4141&hm=7aec0ad2f0ac189f5b8c9b62ad3dca1f0db307d31e54fa8039dc80e92b6fa29f&"} alt=""/>
-                        </div>
-                        <div className="button-test">{"TESTER"}</div>
-                        <div className="button-buy">{"ACHETER"}</div>
-                     </div>
                 </div>
             )}
         </div>
