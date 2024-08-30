@@ -14,7 +14,7 @@ end
 ---@param callback function
 function PlayerAccountManager:ensurePlayerAccount(license, callback)
     if not license then
-        if Configs.Debug then print("^1(function 'ensurePlayerAccount') The 'license' parameter is not defined^7") end
+        if Config.Debug then print("^1(function 'ensurePlayerAccount') The 'license' parameter is not defined^7") end
         return
     end
 
@@ -34,7 +34,7 @@ function PlayerAccountManager:ensurePlayerAccount(license, callback)
                 license
             }, function(id)
                 self.accountCache[license] = true
-                if Configs.Debug then print(("^2(function 'createAccount') A new user with the identifier '%s' has been added to the table 'infinity_store_accounts'^7"):format(license)) end
+                if Config.Debug then print(("^2(function 'createAccount') A new user with the identifier '%s' has been added to the table 'infinity_store_accounts'^7"):format(license)) end
                 callback(true)
             end)
         end
@@ -54,7 +54,7 @@ function PlayerAccountManager:onPlayerConnecting()
         local license = self:getIdentifier(_source)
 
         if not license then
-            if Configs.Debug then print("^1(event 'playerConnecting') The 'playerLicense' variable is not defined^7") end
+            if Config.Debug then print("^1(event 'playerConnecting') The 'playerLicense' variable is not defined^7") end
             return
         end
 
