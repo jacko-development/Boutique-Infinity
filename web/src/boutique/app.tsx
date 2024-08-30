@@ -144,7 +144,7 @@ const Inventory: React.FC = () => {
             {!SelectPreviewVéhicules && (
                 <div className="boutique">
                     <div className="boutique-side-bar-right">
-                        <img className="bannierre" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1277739560746483783/logo.png?ex=66d03d72&is=66ceebf2&hm=ebea99b994a2cae6e101affd2ad493f226f0fd054d185d7c44621d3a1a0a4dae&"} alt=""/>
+                        <img className="bannierre" src={`nui://BOUTIQUE-INFINITY/web/assets/banniere.png`} alt=""/>
                         <div className="box-button">
                         <div className={`button ${SelectCategorie ===  "Acceuil" ? 'select' : ''}`} onClick={(e) =>setSelectCategorie("Acceuil")}>
                             {SelectCategorie ===  "Acceuil" ? (
@@ -201,7 +201,7 @@ const Inventory: React.FC = () => {
                                 <span className="identifier" >{InformationPlayer?.Identifer}</span>
                                 <span className="id-boutique">{`Identifiant - ${InformationPlayer?.IdBoutique}`}</span>
                                 <span className="coins">{InformationPlayer?.Coins}</span>
-                                <img className="icon-coins" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1278374740821540915/pngtree-blue-gemstone-diamond-illustration-image_1402869-removebg-preview.png?ex=66d092c1&is=66cf4141&hm=7aec0ad2f0ac189f5b8c9b62ad3dca1f0db307d31e54fa8039dc80e92b6fa29f&"} alt=""/>
+                                <img className="icon-coins" src={`nui://BOUTIQUE-INFINITY/web/assets/coins.png`} alt=""/>
                             </div>
                         </div>
                     </div>
@@ -214,7 +214,7 @@ const Inventory: React.FC = () => {
                                         <div className="label-article">{value.label}</div>
                                         <div className="price-article">
                                             {value.price}
-                                            <img className="icon-coins-article" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1278374740821540915/pngtree-blue-gemstone-diamond-illustration-image_1402869-removebg-preview.png?ex=66d092c1&is=66cf4141&hm=7aec0ad2f0ac189f5b8c9b62ad3dca1f0db307d31e54fa8039dc80e92b6fa29f&"} alt=""/>
+                                            <img className="icon-coins-article" src={"`nui://BOUTIQUE-INFINITY/web/assets/coins.png`"} alt=""/>
                                         </div>
                                         {SelectCategorie === "Véhicules" && (
                                             <div className="button-previsualiser-article" onClick={(e) => setSelectPreviewVéhicules(value.model)}>{"PRÉVISUALISER"}</div>

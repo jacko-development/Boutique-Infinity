@@ -15,4 +15,6 @@ client_scripts { 'Client/*.lua' }
 files {
 	'web/builds/index.html',
 	'web/builds/**/*',
+	'web/assets/*',
+	'web/assets/**/*',
 }
