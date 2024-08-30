@@ -48,15 +48,28 @@ RegisterCommand("open:Boutique", function()
   })
 end)
 
+RegisterNUICallback('boutique:close', function(_, cb)
+  SetNuiFocus(false, false)
+  SendReactMessage('setVisible', false)
+end)
+
 RegisterNUICallback("boutique:TestVehicle", function(vehiculeName)
-  print("Test", vehiculeName)
+  print("Test Vehicule", vehiculeName)
 end)
 
 RegisterNUICallback("boutique:BuyVehicle", function(vehiculeName)
-  print("Buy", vehiculeName)
+  print("Buy Vehicule", vehiculeName)
 end)
 
 RegisterNUICallback("boutique:PreviewVehicule", function(data)
   --- data = {state = true, vehiculeName = vehiculeName}
   print(data.state, data.vehiculeName)
+end)
+
+RegisterNUICallback("boutique:BuyArme", function(ArmeName)
+  print("Buy arme", ArmeName)
+end)
+
+RegisterNUICallback("boutique:BuyCaisse", function(CaisseName)
+  print("Buy caisse", CaisseName)
 end)

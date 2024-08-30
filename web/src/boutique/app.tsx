@@ -49,6 +49,23 @@ const Inventory: React.FC = () => {
     const [BoutiqueContents, setBoutiqueContents] = useState<ContentsBoutique | null>({
     });
 
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+          if (event.key === 'Escape') {
+            if (SelectPreviewVéhicules === null) {
+                console.log("close")
+                fetchNui("boutique:close");
+            }
+          }
+        };
+    
+        window.addEventListener('keydown', handleKeyDown);
+    
+        return () => {
+          window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [SelectPreviewVéhicules]);
+
     useNuiEvent('boutique:setInfoPlayer', (data: any) => {
         setInformationPlayer(data)
     });
@@ -60,6 +77,14 @@ const Inventory: React.FC = () => {
     const SetPreviewVehicule = (vehiculeName: string) => {
         setSelectPreviewVéhicules(vehiculeName)
         fetchNui("boutique:PreviewVehicule", {state: true, vehiculeName: vehiculeName});
+    };
+
+    const BuyArme = (ArmeName: string) => {
+        fetchNui("boutique:BuyArme", ArmeName);
+    };
+
+    const BuyCaisse = (CaisseName: string) => {
+        fetchNui("boutique:BuyCaisse", CaisseName);
     };
 
     return (
@@ -148,8 +173,11 @@ const Inventory: React.FC = () => {
                                         {SelectCategorie === "Vehicules" && (
                                             <div className="button-previsualiser-article" onClick={(e) => SetPreviewVehicule(value.model)}>{"PRÉVISUALISER"}</div>
                                         )}
-                                        {(SelectCategorie === "Armes" || SelectCategorie === "Caisses") && (
-                                            <div className="button-previsualiser-article">{"ACHETER"}</div>
+                                        {SelectCategorie === "Armes" && (
+                                            <div className="button-previsualiser-article" onClick={(e) => BuyArme(value.model)}>{"ACHETER"}</div>
+                                        )}
+                                        {SelectCategorie === "Caisses" && (
+                                            <div className="button-previsualiser-article" onClick={(e) => BuyCaisse(value.model)}>{"ACHETER"}</div>
                                         )}
                                     </div>
                                 ))}
