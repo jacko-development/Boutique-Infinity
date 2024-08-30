@@ -24,7 +24,6 @@ function PlayerAccountManager:isValidBoutiqueId(boutiqueId, callback)
     end)
 end
 
-
 ---@param license string
 ---@param callback function
 function PlayerAccountManager:ensurePlayerAccount(license, callback)
