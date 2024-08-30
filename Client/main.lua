@@ -55,3 +55,8 @@ end)
 RegisterNUICallback("boutique:BuyVehicle", function(vehiculeName)
   print("Buy", vehiculeName)
 end)
+
+RegisterNUICallback("boutique:PreviewVehicule", function(data)
+  --- data = {state = true, vehiculeName = vehiculeName}
+  print(data.state, data.vehiculeName)
+end)

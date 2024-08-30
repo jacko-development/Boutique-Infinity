@@ -57,6 +57,10 @@ const Inventory: React.FC = () => {
         setBoutiqueContents(data)
     });
 
+    const SetPreviewVehicule = (vehiculeName: string) => {
+        setSelectPreviewVéhicules(vehiculeName)
+        fetchNui("boutique:PreviewVehicule", {state: true, vehiculeName: vehiculeName});
+    };
 
     return (
         <div className="wrapper-boutique">
@@ -142,7 +146,7 @@ const Inventory: React.FC = () => {
                                             <img className="icon-coins-article" src={`nui://BOUTIQUE-INFINITY/web/assets/coins.png`} alt=""/>
                                         </div>
                                         {SelectCategorie === "Vehicules" && (
-                                            <div className="button-previsualiser-article" onClick={(e) => setSelectPreviewVéhicules(value.model)}>{"PRÉVISUALISER"}</div>
+                                            <div className="button-previsualiser-article" onClick={(e) => SetPreviewVehicule(value.model)}>{"PRÉVISUALISER"}</div>
                                         )}
                                         {(SelectCategorie === "Armes" || SelectCategorie === "Caisses") && (
                                             <div className="button-previsualiser-article">{"ACHETER"}</div>

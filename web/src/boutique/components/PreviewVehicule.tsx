@@ -12,6 +12,7 @@ export const PreviewVehicule: React.FC<vehiculeProps> = ({ data, setSelectPrevie
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
           if (event.key === 'Backspace') {
+            fetchNui("boutique:PreviewVehicule", {state: false});
             setSelectPreviewVéhicules(null)
           }
         };
