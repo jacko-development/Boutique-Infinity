@@ -25,11 +25,11 @@ export const PreviewVehicule: React.FC<vehiculeProps> = ({ data, setSelectPrevie
 
 
     const TestVehicle = (vehiculeName: string) => {
-        fetchNui("JIventory:UseItem", vehiculeName);
+        fetchNui("boutique:TestVehicle", vehiculeName);
     };
 
     const BuyVehicle = (vehiculeName: string) => {
-        fetchNui("JIventory:UseItem", vehiculeName);
+        fetchNui("boutique:BuyVehicle", vehiculeName);
     };
 
     return (
