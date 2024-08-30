@@ -10,6 +10,7 @@ end
 
 RegisterCommand("open:Boutique", function()
   SetNuiFocus(true, true)
+  DisplayRadar(false)
   SendReactMessage('setVisible', true)
   SendReactMessage('boutique:setInfoPlayer', { 
     Identifer = "Destructor",
@@ -50,6 +51,7 @@ end)
 
 RegisterNUICallback('boutique:close', function(_, cb)
   SetNuiFocus(false, false)
+  DisplayRadar(true)
   SendReactMessage('setVisible', false)
 end)
 
