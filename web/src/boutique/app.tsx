@@ -6,7 +6,7 @@ import {Dev} from './Dev/dev'
 import './boutique.scss';
 import './style.scss';
 import { debugData } from "../utils/debugData";
-import { PreviewVehicule } from "./components/PreviewVehicule";
+import PreviewVehicule from "./components/PreviewVehicule";
 
 debugData([
     {
@@ -47,6 +47,14 @@ const Inventory: React.FC = () => {
     const [SelectCategorie, setSelectCategorie] = useState<string>("Acceuil");
     const [SelectPreviewVéhicules, setSelectPreviewVéhicules] = useState<any>(null);
     const [BoutiqueContents, setBoutiqueContents] = useState<ContentsBoutique | null>({
+        Vehicules: {
+            "sultan": {
+                model: "sultan",
+                label: "Sultan Rs",
+                price: 1450,
+                image: ""
+            }
+        },
     });
 
     useEffect(() => {
@@ -91,6 +99,7 @@ const Inventory: React.FC = () => {
         <div className="wrapper-boutique">
             {isEnvBrowser() && (
                 <Dev setInformationPlayer={setInformationPlayer}/>
+
             )}
             {SelectPreviewVéhicules !== null && BoutiqueContents && BoutiqueContents?.Vehicules && BoutiqueContents?.Vehicules[SelectPreviewVéhicules] && (
                 <PreviewVehicule data={BoutiqueContents?.Vehicules[SelectPreviewVéhicules]} setSelectPreviewVéhicules={setSelectPreviewVéhicules}/>

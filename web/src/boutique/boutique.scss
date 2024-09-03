@@ -11,6 +11,16 @@
     overflow: hidden;
     cursor: initial;
 
+
+    @keyframes animation-show-preview-vehicules {
+      from {
+        transform: translateX(120%);
+      }
+      to {
+        transform: translateX(0%);
+      }
+    }
+
     .boutique {
       position: absolute;
       width: 139.81vh;
@@ -232,6 +242,7 @@
       right: 0%;
       width: 37.96vh;
       height: 100%;
+      animation: animation-show-preview-vehicules 0.5s;
 
       .bannierre {
         position: absolute;
@@ -304,6 +315,7 @@
           }
         }
       }
-    }
+    } 
+    
 }
   

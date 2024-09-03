@@ -40,7 +40,7 @@ export const Dev: React.FC<Dev> = ({ setInformationPlayer }) => {
 
     return (
         <>
-            <img src={"https://i.imgur.com/3pzRj9n.png"} alt="" style={{ height: "100%", width: "100%" }} />
+            <img src={"https://i.imgur.com/3pzRj9n.png"} alt="" style={{ height: "100%", width: "100%", pointerEvents: "none" }} />
         </>
     );
 };
