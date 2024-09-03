@@ -48,28 +48,34 @@ RegisterNUICallback("boutique:PreviewVehicule", function(data)
       print("Modèle du véhicule invale: " .. vehicleName)
     end
 
-    joaat(vehicleName)
+    RequestModel(vehicleName)
 
     while not HasModelLoaded(data.vehiculeName) do
         Wait(0)
     end
 
-    previewCar = CreateVehicle(data.vehiculeName, -75.2598, -818.9055, 326.1752, 0.0, false, false)
+    local previewCoords = vector3(-148.11672973633, -597.84997558594, 167.00024414062)
+    RequestCollisionAtCoord(previewCoords.x, previewCoords.y, previewCoords.z)
+    SetFocusPosAndVel(previewCoords.x, previewCoords.y, previewCoords.z, 0.0, 0.0, 0.0)
+
+    RequestIpl("imp_dt1_02_modgarage")
+    
+    previewCar = CreateVehicle(data.vehiculeName, -148.11672973633, -597.84997558594, 167.00024414062, 309.8388671875, false, false)
 
     local cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", true)
-    SetCamFov(cam, 50.0)
-    SetCamCoord(cam, vec3(-77.3532, -827.6580, 328.3425))
-    PointCamAtCoord(cam, -75.4155 + 1.5, -819.4504, 326.1752)
+    SetCamFov(cam, 50.0) 
+    SetCamCoord(cam, vec3(-144.44726867676, -591.18572998047, 167.60022888184)) 
+    PointCamAtCoord(cam, -148.11672973633 - 3.0, -599.84997558594, 167.00024414062)
     RenderScriptCams(1, 1, 0, 0, 0)
   else
     if previewCar then
       DeleteEntity(previewCar)
       previewCar = nil
     end
-    RenderScriptCams(false, false, 0, true, true)
-    DestroyCam(cam, false)
-    SetModelAsNoLongerNeeded(data.vehiculeName)
-  end
+      RenderScriptCams(false, false, 0, true, true)
+      DestroyCam(cam, false)
+      SetModelAsNoLongerNeeded(data.vehiculeName)
+    end
   print(data.state, data.vehiculeName)
 end)
 
