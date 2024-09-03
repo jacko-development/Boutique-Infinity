@@ -38,34 +38,47 @@ RegisterNUICallback("boutique:BuyVehicle", function(vehiculeName)
   print("Buy Vehicule", vehiculeName)
 end)
 
-
 local previewCar = nil
 
 RegisterNUICallback("boutique:PreviewVehicule", function(data)
   if data.state == true then
-    RequestModel(data.vehiculeName)
+    local vehicleName = data.vehiculeName
+
+    if not IsModelInCdimage(vehicleName) or not IsModelAVehicle(vehicleName) then
+      print("Modèle du véhicule invale: " .. vehicleName)
+    end
+
+    joaat(vehicleName)
 
     while not HasModelLoaded(data.vehiculeName) do
-        Wait(1)
+        Wait(0)
     end
+
     previewCar = CreateVehicle(data.vehiculeName, -75.2598, -818.9055, 326.1752, 0.0, false, false)
+
     local cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", true)
     SetCamFov(cam, 50.0)
-    RenderScriptCams(1, 1, 0, 0, 0)
     SetCamCoord(cam, vec3(-77.3532, -827.6580, 328.3425))
-
     PointCamAtCoord(cam, -75.4155 + 1.5, -819.4504, 326.1752)
+    RenderScriptCams(1, 1, 0, 0, 0)
   else
-    DeleteEntity(previewCar)
-    previewCar = nil
+    if previewCar then
+      DeleteEntity(previewCar)
+      previewCar = nil
+    end
     RenderScriptCams(false, false, 0, true, true)
+    DestroyCam(cam, false)
+    SetModelAsNoLongerNeeded(data.vehiculeName)
   end
   print(data.state, data.vehiculeName)
 end)
 
 RegisterNUICallback("boutique:updateOrientationPreviewVehicule", function(RotateDegres)
-  local newHeading = tonumber(string.format("%.2f", RotateDegres)) + GetEntityHeading(previewCar)
-  SetEntityHeading(previewCar, newHeading)
+  if previewCar then
+    local currentHeading  = GetEntityHeading(previewCar)
+    local newHeading = (currentHeading + RotateDegres) % 360.0
+    SetEntityHeading(previewCar, newHeading)
+  end
 end)
 
 RegisterNUICallback("boutique:BuyArme", function(ArmeName)
