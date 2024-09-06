@@ -1,3 +1,6 @@
+local previewCar = nil
+
+
 ---@param action string The action you wish to target
 ---@param data any The data you wish to send along with this action
 function SendReactMessage(action, data)
@@ -42,7 +45,6 @@ RegisterNUICallback("boutique:BuyVehicle", function(vehiculeName)
   print("Buy Vehicule", vehiculeName)
 end)
 
-local previewCar = nil
 
 RegisterNUICallback("boutique:PreviewVehicule", function(data)
   local vehicleName = data.vehiculeName
@@ -53,7 +55,7 @@ RegisterNUICallback("boutique:PreviewVehicule", function(data)
     if not IsModelInCdimage(vehicleName) or not IsModelAVehicle(vehicleName) then
       print("Modèle du véhicule invale: " .. vehicleName)
     end
-    
+
     RequestModel(vehicleName)
 
     while not HasModelLoaded(data.vehiculeName) do
@@ -78,8 +80,8 @@ RegisterNUICallback("boutique:PreviewVehicule", function(data)
 
     local cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", true)
     SetCamFov(cam, 50.0) 
-    SetCamCoord(cam, vec3(-144.44726867676, -591.18572998047, 167.60022888184)) 
-    PointCamAtCoord(cam, -148.11672973633 - 3.0, -599.84997558594, 167.00024414062)
+    SetCamCoord(cam, vec3(-144.44726867676, -591.18572998047, 168.30022888184)) 
+    PointCamAtCoord(cam, -148.11672973633 - 2.0, -599.84997558594, 167.00024414062)
     RenderScriptCams(1, 1, 0, 0, 0)
   else
     if previewCar then
@@ -92,6 +94,17 @@ RegisterNUICallback("boutique:PreviewVehicule", function(data)
     end
   print(data.state, data.vehiculeName)
 end)
+
+RegisterNUICallback("boutique:SetColorVehicle", function(data)
+  if previewCar then
+    if data.type == 1 then
+      SetVehicleCustomPrimaryColour(previewCar, data.color.r, data.color.g, data.color.b)
+    elseif data.type == 2 then
+      SetVehicleCustomSecondaryColour(previewCar, data.color.r, data.color.g, data.color.b)
+    end
+  end
+end)
+
 
 RegisterNUICallback("boutique:updateOrientationPreviewVehicule", function(RotateDegres)
   if previewCar then
