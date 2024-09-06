@@ -67,11 +67,6 @@ local function loadVehicleModel(vehicleName)
 end
 
 RegisterNUICallback("boutique:PreviewVehicule", function(data)
-  if type(data) ~= "table" or not data.vehiculeName or type(data.state) ~= "boolean" then
-      print("Invalid data received for PreviewVehicule")
-      return
-  end
-
   local vehicleName = data.vehiculeName
 
   if data.state then
@@ -90,7 +85,7 @@ RegisterNUICallback("boutique:PreviewVehicule", function(data)
       end
       SetCamFov(cam, 50.0) 
       SetCamCoord(cam, vec3(-144.4473, -591.1857, 167.6002)) 
-      PointCamAtCoord(cam, previewCoords.x - 3.0, previewCoords.y + 2, previewCoords.z)
+      PointCamAtCoord(cam, previewCoords.x, previewCoords.y + 2, previewCoords.z)
       RenderScriptCams(1, 1, 0, 0, 0)
   else
       if previewCar then

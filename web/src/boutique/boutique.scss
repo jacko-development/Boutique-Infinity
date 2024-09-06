@@ -251,6 +251,69 @@
         top: 5vh;
       }
 
+
+      .box-info {
+        position: absolute;
+        color: #ffffff;
+        height: 50vh;
+        width: 34.44vh;
+        left: 1.75vh;
+        top: 25.55vh;
+
+        .info-name {
+          position: absolute;
+          top: 0%;
+          font-weight: 500;
+          font-size: 1.9vh;
+          letter-spacing: 0.25vh;
+        }
+
+        .info-title-capacite {
+          position: absolute;
+          color: #ffffffb9;
+          top: 8%;
+          font-weight: 400;
+          font-size: 0.9vh;
+          letter-spacing: 0.20vh;
+        }
+
+        .info-title-classe {
+          position: absolute;
+          color: #ffffffb9;
+          top: 8%;
+          left: 10.37vh;
+          font-weight: 400;
+          font-size: 0.9vh;
+          letter-spacing: 0.20vh;
+        }
+
+        .info-capacite {
+          position: absolute;
+          top: 10.5%;
+          font-weight: 500;
+          font-size: 1.5vh;
+          letter-spacing: 0.25vh;
+        }
+
+        .info-classe {
+          position: absolute;
+          top: 10.5%;
+          left: 10.37vh;
+          font-weight: 500;
+          font-size: 1.5vh;
+          letter-spacing: 0.25vh;
+        }
+
+        .info-description {
+          position: absolute;
+          top: 22.5%;
+          font-weight: 400;
+          font-size: 1.5vh;
+          letter-spacing: 0.14vh;
+          max-width: 90%;
+        }
+      }
+
       .box-button {
         position: absolute;
         background-color: #142531;

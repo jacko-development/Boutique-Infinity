@@ -21,6 +21,9 @@ interface ContentsBoutique {
             model: string;
             label: string;
             price: number;
+            place: number;
+            type: string;
+            description: any;
             image?: string
         }
     };
@@ -50,8 +53,11 @@ const Inventory: React.FC = () => {
         Vehicules: {
             "sultan": {
                 model: "sultan",
-                label: "Sultan Rs",
+                label: "BMW M3 G80 2021",
                 price: 1450,
+                place: 4,
+                type: "coupés sports",
+                description: "La BMW M3 G80 est une berline sportive haute performance, alliant puissance brute et design agressif. Avec son moteur 6 cylindres en ligne de 510 chevaux, elle offre une expérience de conduite exceptionnelle, tant sur route que sur piste.",
                 image: ""
             }
         },

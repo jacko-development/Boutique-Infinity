@@ -12,9 +12,7 @@ const PreviewVehicule: React.FC<vehiculeProps> = ({ data, setSelectPreviewVéhic
     useEffect(() => {
 
         const handleMouseMove = (e: any) => {
-          console.log(isDraggingVehicle)
           if (isDraggingVehicle && e.movementX > 0) {
-            console.log("+6")
             fetchNui("boutique:updateOrientationPreviewVehicule", 6)
             .then(() => {
             })
@@ -22,7 +20,6 @@ const PreviewVehicule: React.FC<vehiculeProps> = ({ data, setSelectPreviewVéhic
             });
           }
           if (isDraggingVehicle && e.movementX < 0) {
-            console.log("-6")
             fetchNui("boutique:updateOrientationPreviewVehicule", -6)
             .then(() => {
             })
@@ -77,6 +74,15 @@ const PreviewVehicule: React.FC<vehiculeProps> = ({ data, setSelectPreviewVéhic
           src={`nui://BOUTIQUE-INFINITY/web/assets/banniere.png`}
           alt="Bannière du véhicule"
         />
+        <div className="box-info">
+            <span className="info-name">{data.label}</span>
+            <span className="info-title-capacite">CAPACITE</span>
+            <span className="info-title-classe">CLASSE</span>
+            <span className="info-capacite">{`${data.place} Places`}</span>
+            <span className="info-classe">{data.type}</span>
+            <span className="info-description">{data.description}</span>
+        </div>
+
         <div className="box-button">
           <div className="price-vehicule">
             {data.price} {/* Use data.price directly */}

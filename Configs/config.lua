@@ -6,12 +6,18 @@ local Config <const> = {
             model = "sultan",
             label = "Sultan",
             price = 900,
+            place = 4,
+            type = "coupés sports",
+            description = "La BMW M3 G80 est une berline sportive haute performance, alliant puissance brute et design agressif. Avec son moteur 6 cylindres en ligne de 510 chevaux, elle offre une expérience de conduite exceptionnelle, tant sur route que sur piste.",
             image = "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
         },
         ["adder"] = {
             model = "adder",
             label = "Adder",
             price = 910,
+            place = 2,
+            type = "coupés sports",
+            description = "La BMW M3 G80 est une berline sportive haute performance, alliant puissance brute et design agressif. Avec son moteur 6 cylindres en ligne de 510 chevaux, elle offre une expérience de conduite exceptionnelle, tant sur route que sur piste.",
             image = "https://cdn.discordapp.com/attachments/1043600611175829615/1278439949611438280/image.png?ex=66d0cf7c&is=66cf7dfc&hm=7142fd4da426076290f41195c6b2421e90e317d7e0ff03a8731364d5266cc0ca&"
         }
     },
