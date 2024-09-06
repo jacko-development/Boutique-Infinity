@@ -141,3 +141,24 @@ function PlayerAccountManager:getCoins(boutiqueId, callback)
         end
     end)
 end
+
+function PlayerAccountManager:getBoutiqueIdById(playerId, callback)
+    if not playerId then
+        if Config.Debug then print("^1(function 'getBoutiqueIdById') The 'playerId' parameter is not defined^7") end
+        callback(tonumber(0))
+        return
+    end
+
+    local license = self:getIdentifier(playerId)
+
+    MySQL.Async.fetchScalar('SELECT id FROM infinity_store_accounts WHERE license = @license', {
+        ['@license'] = license
+    }, function(boutiqueId)
+        if boutiqueId then
+            callback(tonumber(boutiqueId))
+        else
+            if Config.Debug then print(("^1(function 'getBoutiqueIdByLicense') No boutique ID found for license '%s'^7"):format(license)) end
+            callback(tonumber(0))
+        end
+    end)
+end
