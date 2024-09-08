@@ -88,6 +88,11 @@ RegisterNUICallback("boutique:PreviewVehicule", function(data)
       DeleteEntity(previewCar)
       previewCar = nil
     end
+      local player = PlayerPedId()
+      local PlayerPosition = GetEntityCoords(player)
+      RequestCollisionAtCoord(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z)
+      SetFocusPosAndVel(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z, 0.0, 0.0, 0.0)
+
       RenderScriptCams(false, false, 0, true, true)
       DestroyCam(cam, false)
       SetModelAsNoLongerNeeded(data.vehiculeName)
