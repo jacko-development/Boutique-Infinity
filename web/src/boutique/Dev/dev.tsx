@@ -11,6 +11,7 @@ export const Dev: React.FC<Dev> = ({ setInformationPlayer }) => {
             Identifier: "Destructor",
             IdBoutique: "6545",
             Coins: 1400,
+            Avatar: "",
             Historique: [
                 {transaction: "BMW M3 G80 2021", coins: -1400, date: '28/08/2024'},
                 {transaction: "BMW M3 G80 2021", coins: -1400, date: '27/08/2024'},

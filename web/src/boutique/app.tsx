@@ -50,6 +50,7 @@ interface ContentsInformationPlayer {
     Identifier: string;
     IdBoutique: number;
     Coins: number;
+    Avatar: string;
     Historique?: {
         transaction: string;
         coins: number;
@@ -177,7 +178,7 @@ const Inventory: React.FC = () => {
                         </div>
                         </div>
                         <div className="box-information">
-                            <img className="icon-user" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1277728344846106686/284356.png?ex=66d03300&is=66cee180&hm=507627d51098b0bf8a749476398603da1afc076517bddc65a9f6025165eab0f3&"} alt=""/>
+                            <img className="icon-user" src={InformationPlayer?.Avatar} alt=""/>
                             <div className="info">
                                 <span className="identifier" >{InformationPlayer?.Identifier}</span>
                                 <span className="id-boutique">{`Identifiant - ${InformationPlayer?.IdBoutique}`}</span>

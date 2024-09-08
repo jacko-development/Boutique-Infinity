@@ -17,10 +17,12 @@ RegisterCommand("open:Boutique", function()
   SendReactMessage('setVisible', true)
   
   ESX.TriggerServerCallback('infinity:boutique:getPlayerAccountInfoById', function(playerData)
+    print(playerData.avatarDiscord)
     SendReactMessage('boutique:setInfoPlayer', { 
       Identifier = playerData.steamName,
       IdBoutique = playerData.boutiqueId,
       Coins = playerData.coinsNumber,
+      Avatar = playerData.avatarDiscord,
       Historique = {
           {transaction = "BMW M3 G80 2021", coins = -1400, date = '28/08/2024'},
           {transaction = "BMW M3 G80 2021", coins = -1400, date = '27/08/2024'},

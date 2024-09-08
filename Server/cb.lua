@@ -24,12 +24,23 @@ ESX.RegisterServerCallback('infinity:boutique:getPlayerAccountInfoById', functio
             local coinsNumber = tonumber(result[1].coins)
 
             if boutiqueId and coinsNumber then
-                local playerData = {
-                    steamName = playerSteamName,
-                    boutiqueId = boutiqueId,
-                    coinsNumber = coinsNumber
-                }
-                cb(playerData)
+                local discordUserId = GetDiscordIdentifier(_source)
+                local discordUserId = GetDiscordIdentifier(_source)
+
+                GetDiscordAvatar(discordUserId, function(avatarUrl)
+                    local discordAvatar = avatarUrl or nil
+
+                    -- Créer la table de données joueur après avoir récupéré l'avatar
+                    local playerData = {
+                        steamName = playerSteamName,
+                        boutiqueId = boutiqueId,
+                        coinsNumber = coinsNumber,
+                        avatarDiscord = discordAvatar
+                    }
+                    -- Appeler le callback avec les données joueur complètes
+                    cb(playerData)
+                end)
+            
             else
                 print("^1Erreur : Données invalides pour la licence " .. playerLicense .. "^7")
                 cb(nil)
