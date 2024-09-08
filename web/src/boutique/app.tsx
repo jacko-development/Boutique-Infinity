@@ -45,8 +45,20 @@ interface ContentsBoutique {
     }
 }
 
+
+interface ContentsInformationPlayer {
+    Identifier: string;
+    IdBoutique: number;
+    Coins: number;
+    Historique?: {
+        transaction: string;
+        coins: number;
+        date: string;
+    }[];
+}
+
 const Inventory: React.FC = () => {
-    const [InformationPlayer, setInformationPlayer] = useState<any | null>(null);
+    const [InformationPlayer, setInformationPlayer] = useState<ContentsInformationPlayer | null>(null);
     const [SelectCategorie, setSelectCategorie] = useState<string>("Acceuil");
     const [SelectPreviewVéhicules, setSelectPreviewVéhicules] = useState<any>(null);
     const [BoutiqueContents, setBoutiqueContents] = useState<ContentsBoutique | null>({
@@ -167,7 +179,7 @@ const Inventory: React.FC = () => {
                         <div className="box-information">
                             <img className="icon-user" src={"https://cdn.discordapp.com/attachments/1277292715666571316/1277728344846106686/284356.png?ex=66d03300&is=66cee180&hm=507627d51098b0bf8a749476398603da1afc076517bddc65a9f6025165eab0f3&"} alt=""/>
                             <div className="info">
-                                <span className="identifier" >{InformationPlayer?.Identifer}</span>
+                                <span className="identifier" >{InformationPlayer?.Identifier}</span>
                                 <span className="id-boutique">{`Identifiant - ${InformationPlayer?.IdBoutique}`}</span>
                                 <span className="coins">{InformationPlayer?.Coins}</span>
                                 <img className="icon-coins" src={`nui://BOUTIQUE-INFINITY/web/assets/coins.png`} alt=""/>
@@ -199,11 +211,22 @@ const Inventory: React.FC = () => {
                             </div>
                         )}
                         {SelectCategorie === "Historique" && (
-                            <div className="wrapper-historique">
-                                {InformationPlayer?.Historique && Object.values(InformationPlayer?.Historique).map((value, index) => ( 
-                                    <div className="box-historique"></div>
-                                ))}
-                            </div>
+                            <>
+                                <div className="info-historique">
+                                  <span className="info-transaction">Transaction</span>
+                                  <span className="info-coins">Coins</span>
+                                  <span className="info-date">Date</span>
+                                </div>
+                                <div className="wrapper-historique">
+                                    {InformationPlayer?.Historique && Object.values(InformationPlayer?.Historique).map((value, index) => ( 
+                                        <div className="box-historique">
+                                            <span className="info-transaction">{value.transaction}</span>
+                                            <span className="info-coins">{value.coins}</span>
+                                            <span className="info-date">{value.date}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
                         )}
                     </div>
                 </div>

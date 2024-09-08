@@ -213,6 +213,36 @@
           }
         }
 
+
+        .info-historique {
+          position: absolute;
+          background: #1D2B39;
+          top: 12.20vh;
+          width: 104.72vh;
+          height: 5.62vh;
+          color: #ffffff;
+          font-size: 2vh;
+          font-weight: 500;
+
+          .info-transaction {
+            position: absolute;
+            top: 25%;
+            left: 6%;
+          }
+
+          .info-coins {
+            position: absolute;
+            top: 25%;
+            left: 65%;
+          }
+
+          .info-date {
+            position: absolute;
+            top: 25%;
+            left: 90%;
+          }
+        }
+
         .wrapper-historique {
           position: absolute;
           top: 19.20vh;
@@ -229,8 +259,27 @@
             width: 104.72vh;
             height: 4.62vh;
             background: #1D2B39;
-            margin-top: 1.5vh;
+            margin-bottom: 1.5vh;
             box-shadow: inset 0.40vh 0 0 var(--color-theme);
+            color: #ffffff;
+
+            .info-transaction {
+              position: absolute;
+              top: 25%;
+              left: 5%;
+            }
+  
+            .info-coins {
+              position: absolute;
+              top: 25%;
+              left: 65%;
+            }
+  
+            .info-date {
+              position: absolute;
+              top: 25%;
+              left: 89%;
+            }
           }
         }
       }

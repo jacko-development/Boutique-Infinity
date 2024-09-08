@@ -18,7 +18,7 @@ RegisterCommand("open:Boutique", function()
   
   ESX.TriggerServerCallback('infinity:boutique:getPlayerAccountInfoById', function(playerData)
     SendReactMessage('boutique:setInfoPlayer', { 
-      Identifer = playerData.steamName,
+      Identifier = playerData.steamName,
       IdBoutique = playerData.boutiqueId,
       Coins = playerData.coinsNumber,
       Historique = {

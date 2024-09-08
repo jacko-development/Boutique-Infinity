@@ -8,7 +8,7 @@ export const Dev: React.FC<Dev> = ({ setInformationPlayer }) => {
 
     useEffect(() => {
         setInformationPlayer({
-            Identifer: "Destructor",
+            Identifier: "Destructor",
             IdBoutique: "6545",
             Coins: 1400,
             Historique: [
