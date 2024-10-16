@@ -1,5 +1,5 @@
-local DISCORD_BOT_TOKEN = "MTE4NTU3NTQ5NDUzNjY2MzE0MQ.G-E1o_.QpeZ7Xp0BTNl7-1oCLrR0SgBnb1Zw0y7w1rTCg"
-local GUILD_ID = "1164911924157366342"
+local DISCORD_BOT_TOKEN = ""
+local GUILD_ID = ""
 
 function GetDiscordAvatar(userId, callback)
     local url = ("https://discord.com/api/v10/guilds/%s/members/%s"):format(GUILD_ID, userId)
